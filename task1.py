@@ -5,10 +5,14 @@ import sympy as sy
 
 # DO NOT CHANGE THE NAME OF gausslegendre() function
 def gausslegendre(f, a, b, n=20):
-    ans = 0
-    # Edit here to implement your code
-
+    ans = 0 
+    # Gauss-Legendre (default interval is [-1, 1])
+    x, w=np.polynomial.legendre.leggauss(n)
+    t = 0.5*(x + 1)*(b - a) + a
+    # Translate x values from the interval [-1, 1] to [a, b]
+    ans = sum(w * f(t))*0.5*(b-a)
     return ans
+    
 
 if __name__ == "__main__":
     def f(x):
